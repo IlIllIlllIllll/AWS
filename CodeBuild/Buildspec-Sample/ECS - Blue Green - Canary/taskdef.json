@@ -1,0 +1,28 @@
+{
+ "executionRoleArn": "<ECS Taskdefinition Role ARN>",
+ "containerDefinitions": [{
+  "name": "<ECS Container Name>",
+  "image": "<IMAGE>",
+  "essential": "true",
+  "portMappings": [{
+    "protocol": "tcp",
+    "containerPort": "<Port>"
+  }],
+  "healthCheck": {
+    "retries": 3,
+    "command": [
+      "CMD-SHELL",
+      "curl -f http://localhost:<Port>/<Health Check Path> || exit 1"
+    ],
+    "timeout": 5,
+    "interval": 30,
+    "startPeriod": null
+  }
+ }],
+ "requiresCompatibilitiess": [
+   "EC2"
+ ],
+ "cpu": "512",
+ "memory": "512",
+ "family": "<Taskdefinition Name>"
+}

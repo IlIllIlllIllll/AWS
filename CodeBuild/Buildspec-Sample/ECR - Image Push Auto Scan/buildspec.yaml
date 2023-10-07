@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - AccountID=$(aws sts get-caller-identity --query "Account" --output text)
+      - PRODUCT_ECR_NAME=<Product ECR Name>
+      - STRESS_ECR_NAME=<Stress ECR Name>
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $AccountID.dkr.ecr.ap-northeast-2.amazonaws.com
+      - PRODUCT_URI=$AccountID.dkr.ecr.ap-northeast-2.amazonaws.com/$PRODUCT_ECR_NAME
+      - STRESS_URI=$AccountID.dkr.ecr.ap-northeast-2.amazonaws.com/$STRESS_ECR_NAME
+      - PRODUCT_IMAGE_TO_TAGGED=$( aws ecr list-images --region ap-northeast-2 --repository-name $PRODUCT_ECR_NAME --filter "tagStatus=TAGGED" --query 'imageIds[*]' --output text | awk '{print $1}' )
+      - STRESS_IMAGE_TO_TAGGED=$( aws ecr list-images --region ap-northeast-2 --repository-name $STRESS_ECR_NAME --filter "tagStatus=TAGGED" --query 'imageIds[*]' --output text | awk '{print $1}' )
+      - IMAGE_TAG="$latest"
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t $PRODUCT_URI:$IMAGE_TAG ./product/
+      - docker build -t $STRESS_URI:$IMAGE_TAG ./stress/
+  post_build:
+    commands:
+      - echo Pushing the Docker images...
+      - docker push $PRODUCT_URI:$IMAGE_TAG
+      - docker push $STRESS_URI:$IMAGE_TAG
+      - aws ecr start-image-scan --region ap-northeast-2 --repository-name $PRODUCT_ECR_NAME --image-id imageDigest=$PRODUCT_IMAGE_TO_TAGGED
+      - aws ecr start-image-scan --region ap-northeast-2 --repository-name $STRESS_ECR_NAME --image-id imageDigest=$STRESS_IMAGE_TO_TAGGED
