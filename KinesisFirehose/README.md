@@ -15,12 +15,12 @@ Kinesis Data Firehose에서 S3로 데이터를 전송하는 Prefix는 다음과 
 #### Example Log
 ```
 {
-   "date": 2023-08-06 11:27:45,641,
-   "IP: 127.0.0.1,
-   "Methods": "GET"
-   "Path": /v1/app,
-   "Protocol": HTTP/1.1,
-   "StatusCode: 200
+   "date": 2023-08-06 11:27:45,
+   "ip: 127.0.0.1,
+   "methods": "GET"
+   "path": /v1/app,
+   "protocol": HTTP/1.1,
+   "statusCode: 200
 }
 ```
 
@@ -28,8 +28,50 @@ Kinesis Data Firehose에서 S3로 데이터를 전송하는 Prefix는 다음과 
 
 **Default Dynamic Partitioning**
 
-Method에 대해서 Partitioning은 다음과 같습니다.
+<S3 Bucket>/GET에 대해서 Partitioning을 진행할 시 다음과 같습니다.
 ```
 Key     JQ experession
-Method  .Method
+method  .method
+```
+S3 Bucket Prefix
+```
+!{partitionKeyFromQuery:method}
+```
+
+<br>
+
+<S3 Bucket>/path/method에 대해서 Partitioning은 다음과 같습니다.
+```
+Key     JQ experession
+path   .path
+method  .method
+```
+S3 Bucket Prefix
+```
+!{partitionKeyFromQuery:path}/!{partitionKeyFromQuery:method}/
+```
+
+<br>
+
+<S3 Bucket>/year/month/day에 대해서 Partitioning은 다음과 같습니다.
+```
+Key     JQ experession
+year   .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%Y)
+month  .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%m)
+day    .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%d)
+```
+S3 Bucket Prefix
+```
+!{partitionKeyFromQuery:year}/!{partitionKeyFromQuery:month}/!{partitionKeyFromQuery:day}
+```
+
+<S3 Bucket>/year/method에 대해서 Partitioning은 다음과 같습니다.
+```
+Key     JQ experession
+year   .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%Y)
+method  .method
+```
+S3 Bucket Prefix
+```
+!{partitionKeyFromQuery:year}/method/
 ```
