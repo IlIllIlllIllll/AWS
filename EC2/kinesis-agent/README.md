@@ -57,8 +57,7 @@ sudo systemctl restart aws-kinesis-agent
 ---
 ### Kinesis Agent - Kinesis Data Firehose
 
-![Alt text](image.png)
-
+![Create Kinesis Firehose](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/kinesis-agent/img/image-1.png)
 ```shell
 aws s3 mb s3://<S3 Bucket Name>
 ```
