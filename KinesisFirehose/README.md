@@ -28,8 +28,9 @@ Kinesis Data Firehose에서 S3로 데이터를 전송하는 Prefix는 다음과 
 <br>
 
 **Default Dynamic Partitioning**
+
 Method에 대해서 Partitioning은 다음과 같습니다.
 ```
-Key	JQ experession
-Method	.Method
+Key     JQ experession
+Method  .Method
 ```
