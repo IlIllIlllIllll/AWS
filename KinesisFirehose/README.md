@@ -13,7 +13,6 @@ Kinesis Data Firehose에서 S3로 데이터를 전송하는 Prefix는 다음과 
 ---
 ### Kinesis Data Firehose Dynamic Partitioning
 #### Example Log
-**Transfor Log**
 ```
 {
    "date": 2023-08-06 11:27:45,641,
