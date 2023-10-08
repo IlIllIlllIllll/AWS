@@ -75,3 +75,5 @@ S3 Bucket Prefix
 ```
 !{partitionKeyFromQuery:year}/method/
 ```
+
+> Kiensis Data Firehose Dynamic Partitioning - https://velog.io/@arcokim/firehose-dynamic-partitioning
