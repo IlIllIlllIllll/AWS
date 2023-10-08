@@ -111,3 +111,6 @@ chmod 644 /var/log/httpd/access_log
 ```shell
 sudo systemctl restart aws-kinesis-agent
 ```
+> <span style="color:red"> Job for aws-kinesis-agent.service failed because the control process exited with error code.
+See "systemctl status aws-kinesis-agent.service" and "journalctl -xeu aws-kinesis-agent.service" for details. </span> <br>
+해당 에러는 디렉토리 또는 파일에 대해서 읽을 권한이 없다는 의미입니다. 따라서 해당 디렉토리 및 파일에대한 읽기 권한을 부여해주어야 합니다.
