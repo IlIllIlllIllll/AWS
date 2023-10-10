@@ -1,4 +1,4 @@
-## Kinesis Data Firehose
+## Kinesis Data Firehose - Dynamic Partitioning
 ---
 **Kinesis Data Firehose Dynamic Partitioning란?**
 
