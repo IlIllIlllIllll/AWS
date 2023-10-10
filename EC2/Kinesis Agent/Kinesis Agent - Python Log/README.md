@@ -18,15 +18,19 @@
 }
 ```
 
+<br>
+
 ```shell
-aws kiensis create-stream --stream-name <KDS Name>
+aws kinesis create-stream --stream-name <KDS Name>
 ```
+
+<br>
 
 ```shell
 sudo yum instlal -y aws-kinesis-agent
-sudo systemctl start aws-kinesis-agent
-sudo chkconfig aws-kinesis-agent on
 ```
+
+<br>
 
 ```python
 import logging
@@ -61,6 +65,8 @@ while True:
     time.sleep(5)
 ```
 
+<br>
+
 ```shell
 vim /etc/aws-kinesis/agent.json
 {
@@ -75,10 +81,17 @@ vim /etc/aws-kinesis/agent.json
  }
 ```
 
+<br>
+
 ```shell
-sudo chown aws-kinesis-agent-user:aws-kinesis-agent-user -R /opt/kinesis-stream
+sudo chown aws-kinesis-agent-user:aws-kinesis-agent-user -R <path>
 ```
+
+<br>
+
 > ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Python%20Log/img/image-1.png)
+
+<br>
 
 ```shell
 vim /etc/sysconfig/aws-kinesis-agent
@@ -86,17 +99,29 @@ vim /etc/sysconfig/aws-kinesis-agent
 #
 # AWS_ACCESS_KEY_ID=<Access Key>
 # AWS_SECRET_ACCESS_KEY=<Secret Access Key>
-# AWS_DEFAULT_REGION=ap-northesat-2
+# AWS_DEFAULT_REGION=<region>
 #
 # AGENT_ARGS=""
 # AGENT_LOG_LEVEL="INFO"
 ```
 
+<br>
+
 ```shell
-sudo service aws-kinesis-agent start
+sudo service aws-kinesis-agent restart
+sudo chkconfig aws-kinesis-agent on
 ```
+<br>
 
 ```shell
 sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 ```
+
+<br>
+
 ![Successed Record in KDS](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/kinesis-agent/img/image-2.png)
+
+<br>
+
+### 주의 
+> 만약 /home/ec2-user경로에 Log File이 존재시 Parsing에 대해서 Error가 발생합니다. 
