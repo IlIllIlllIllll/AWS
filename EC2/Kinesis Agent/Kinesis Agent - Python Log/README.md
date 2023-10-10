@@ -2,7 +2,6 @@
 ---
 ### Kinesis Agent - Kinesis Data Stream
 ```json
-cat <<EOF>> put-kds.json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -17,7 +16,6 @@ cat <<EOF>> put-kds.json
         }
     ]
 }
-EOF
 ```
 
 ```shell
