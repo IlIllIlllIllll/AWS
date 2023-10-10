@@ -5,22 +5,27 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - AccountID=$(aws sts get-caller-identity --query "Account" --output text)
-      - ECR_NAME=<ECR Name>
+      - PRODUCT_ECR_NAME=wsi-product
+      - STRESS_ECR_NAME=wsi-stress
       - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $AccountID.dkr.ecr.ap-northeast-2.amazonaws.com
-      - ECR_URI=$AccountID.dkr.ecr.ap-northeast-2.amazonaws.com/$ECR_NAME
-      - IMAGE_TAG="latest"
+      - PRODUCT_URI=$AccountID.dkr.ecr.ap-northeast-2.amazonaws.com/$PRODUCT_ECR_NAME
+      - STRESS_URI=$AccountID.dkr.ecr.ap-northeast-2.amazonaws.com/$STRESS_ECR_NAME
+      - IMAGE_TAG=$(date -d "+9 hours" "+%Y-%m-%d.%H.%M.%S")
   build:
     commands:
-      - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $ECR_URI:$IMAGE_TAG .
+      - docker build -t $PRODUCT_URI:$IMAGE_TAG ./product/
+      - docker build -t $STRESS_URI:$IMAGE_TAG ./stress/
   post_build:
     commands:
-      - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $ECR_URI:$IMAGE_TAG
-      - echo "$(jq .containerDefinitions[].image=\"$ECR_URI:$IMAGE_TAG\" taskdef.json)" > taskdef.json
+      - docker push $PRODUCT_URI:$IMAGE_TAG
+      - docker push $STRESS_URI:$IMAGE_TAG
+      - echo "$(jq .containerDefinitions[].image=\"$PRODUCT_URI:$IMAGE_TAG\" ./product/taskdef.json)" > ./product/taskdef.json
+      - echo "$(jq .containerDefinitions[].image=\"$STRESS_URI:$IMAGE_TAG\" ./stress/taskdef.json)" > ./stress/taskdef.json
 artifacts:
   files:
-    - 'appspec.yaml'
-    - 'taskdef.json'
+    - 'product/appspec.yaml'
+    - 'product/taskdef.json'
+    - 'stress/appspec.yaml'
+    - 'stress/taskdef.json'

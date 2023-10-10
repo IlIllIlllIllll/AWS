@@ -5,7 +5,7 @@
   "image": "<IMAGE>",
   "essential": "true",
   "portMappings": [{
-    "protocol": "tcp",
+    "protocol": "tcp",  
     "containerPort": "<Port>"
   }],
   "healthCheck": {
@@ -20,8 +20,8 @@
   }
  }],
  "requiresCompatibilitiess": [
-   "EC2"
- ],
+  "FARGATE"
+],
  "cpu": "512",
  "memory": "512",
  "family": "<Taskdefinition Name>"
