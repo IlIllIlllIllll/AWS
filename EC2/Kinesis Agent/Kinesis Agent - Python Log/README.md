@@ -121,7 +121,6 @@ sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 
 ![Successed Record in KDS](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Python%20Log/img/image-2.png)
 
-
 <br>
 
 ### 주의 
