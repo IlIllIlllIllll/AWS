@@ -78,7 +78,7 @@ vi /etc/aws-kinesis/agent.json
 ```shell
 sudo chown aws-kinesis-agent-user:aws-kinesis-agent-user -R /opt/kinesis-stream
 ```
-> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/kinesis-agent/img/image-1.png)
+> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis Agent/Kinesis Agent - Python Log/img/image-1.png)
 
 ```shell
 vim /etc/sysconfig/aws-kinesis-agent
