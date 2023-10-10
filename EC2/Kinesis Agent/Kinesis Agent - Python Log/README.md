@@ -62,7 +62,7 @@ while True:
 ```
 
 ```shell
-vi /etc/aws-kinesis/agent.json
+vim /etc/aws-kinesis/agent.json
 {
     "cloudwatch.emitMetrics":true,
     "kinesis.endpoint":"https://kinesis.ap-northeast-2.amazonaws.com",
