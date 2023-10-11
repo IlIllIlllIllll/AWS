@@ -1,4 +1,4 @@
-## ECS images
+## ECS
 ---
 ### Resolt
 
