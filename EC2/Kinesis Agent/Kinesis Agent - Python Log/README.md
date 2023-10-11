@@ -1,4 +1,4 @@
-## Kinesis Agnet - Custom Log
+## Kinesis Agnet - Python Log
 ---
 ### Kinesis Agent - Kinesis Data Stream
 ```json

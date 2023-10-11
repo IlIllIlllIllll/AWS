@@ -1,4 +1,4 @@
-## Kinesis Agnet - Golang Log
+## Kinesis Agnet - Regular Expression
 ---
 ### Kinesis Agent - Kinesis Data Stream
 ```json
@@ -98,10 +98,18 @@ vim /etc/aws-kinesis/agent.json
     "flows":[
        {
           "filePattern":"<Log Path>*",
-          "kinesisStream":"<KDS Name>"
-       }
+          "kinesisStream":"<KDS Name>",
+          "dataProcessingOptions": [
+                {
+                    "optionName": "LOGTOJSON",
+                    "logFormat": "COMMONAPACHELOG",
+                    "matchPattern": "^([ ^:]*) - - ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*)",
+                    "customFieldNames": ["host", "method", "path", "protocol", "statuscode"]
+                }
+            ]
+        }
     ]
- }
+}
 ```
 
 <br>
@@ -147,4 +155,4 @@ sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 <br>
 
 ### 주의 
-> 만약 /home/ec2-user경로에 Log File이 존재시 Parsing에 대해서 Error가 발생합니다. 
+> 만약 /home/ec2-user경로에 Log File이 존재시 Parsing에 대해서 Error가 발생합니다.
