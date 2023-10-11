@@ -5,6 +5,8 @@
 127.0.0.1:42014 - - GET /healthz HTTP/1.1 200
 ```
 
+<br>
+
 ### Regular Expression Sample - Scenario 1
 ```json
 "matchPattern": "^([^:]*):[^ ]* - - ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*)",
@@ -21,6 +23,8 @@
 }
 ```
 
+<br>
+
 ### Regular Expression Sample - Scenario 2
 ```json
 "matchPattern": "^([^ ]*) - - ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*)",
@@ -36,6 +40,8 @@
     "statuscode": "200"
 }
 ```
+
+<br>
 
 ### Regular Expression Sample - Scenario 3
 ```json
