@@ -34,7 +34,7 @@ select * from wsi_logs;
 
 ---
 ### Upload S3
-```
+```sql
 %flink.ssql(type=update)
 -- %flink.ssql(type=update, parallelism=4)
 INSERT INTO wsi-bucket-2023/output/
