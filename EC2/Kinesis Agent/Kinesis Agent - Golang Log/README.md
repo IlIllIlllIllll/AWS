@@ -112,7 +112,7 @@ sudo chown aws-kinesis-agent-user:aws-kinesis-agent-user -R <path>
 
 <br>
 
-> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Python%20Log/img/image-1.png)
+> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Golang%20Log/img/image-1.png)
 
 <br>
 
@@ -142,7 +142,7 @@ sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 
 <br>
 
-![Successed Record in KDS](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Python%20Log/img/image-2.png)
+![Successed Record in KDS](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Golang%20Log/img/image-2.png)
 
 <br>
 
