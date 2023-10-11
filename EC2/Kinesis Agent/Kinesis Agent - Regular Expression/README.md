@@ -120,7 +120,7 @@ sudo chown aws-kinesis-agent-user:aws-kinesis-agent-user -R <path>
 
 <br>
 
-> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis%20Agent%20-%20Python%20Log/img/image-1.png)
+> ![filePattern User](https://github.com/IlIllIlllIllll/AWS/raw/main/EC2/Kinesis%20Agent/Kinesis Agent/Kinesis Agent - Regular Expression/img/image-1.png)
 
 <br>
 
