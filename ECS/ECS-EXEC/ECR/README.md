@@ -31,7 +31,6 @@ func main() {
 }
 ```
 
-
 ### Dockerfile
 ```Dockerfile
 FROM golang:alpine
