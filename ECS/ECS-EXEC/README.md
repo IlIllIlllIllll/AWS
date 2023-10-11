@@ -27,6 +27,9 @@ aws ecs execute-command  \
 The Session Manager plugin was installed successfully. Use the AWS CLI to start a session.
 
 An error occurred (InvalidParameterException) when calling the ExecuteCommand operation: The execute command failed because execute command was not enabled when the task was run or the execute command agent isn’t running. Wait and try again or run a new task with execute command enabled and try again. <br>
+
+<br>
+
 **Trouble-Shooting**
 ```shell
 aws ecs update-service \
