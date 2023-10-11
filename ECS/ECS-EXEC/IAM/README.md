@@ -1,7 +1,6 @@
-## ECS
+## IAM
 ---
-## EC2-IAM
-### create-ec2-policy
+### EC2 - IAM
 ```json
 {
     "Version": "2012-10-17",
@@ -16,13 +15,10 @@
     ]
 }
 ```
-<br>
-
 ```shell
 aws iam create-policy --policy-name <Policy Name> --policy-document file://<file Name>
 ```
 
-### create-ec2-role
 ```json
 {
     "Version": "2012-10-17",
@@ -40,15 +36,12 @@ aws iam create-policy --policy-name <Policy Name> --policy-document file://<file
     ]
 }
 ```
-
-<br>
-
 ```shell
 aws iam create-role --role-name <role Name> --assume-role-policy-document file://<file Name>
 ```
 
-## task-definition-IAM
-### task-defintion-Policy create
+<br>
+
 ```json
 {
     "Version": "2012-10-17",
@@ -86,14 +79,10 @@ aws iam create-role --role-name <role Name> --assume-role-policy-document file:/
     ]
 }
 ```
-
-<br>
-
 ```shell
 aws iam create-policy --policy-name <Policy Name> --policy-document file://<file Name>
 ```
 
-### task-defintion-role create
 ```json
 {
     "Version": "2012-10-17",
@@ -111,9 +100,6 @@ aws iam create-policy --policy-name <Policy Name> --policy-document file://<file
     ]
 }
 ```
-
-<br>
-
-```shell
+```
 aws iam create-role --role-name <role Name> --assume-role-policy-document file://<file Name>
 ```
