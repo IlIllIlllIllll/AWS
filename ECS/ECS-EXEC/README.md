@@ -5,7 +5,7 @@
 aws ecs run-task \
     --cluster <cluster Name>  \
     --task-definition <Taskdefinition Name> \
-    --network-configuration awsvpcConfiguration="{subnets=[<Subnet ID>, subnet-00adfe3ed0c253049],securityGroups=[<Security-group-id],assignPublicIp=<DISABLED or ENABLED>}" \
+    --network-configuration awsvpcConfiguration="{subnets=[<Subnet ID>, <Subnet ID>],securityGroups=[<Security-group-id>],assignPublicIp=<DISABLED or ENABLED>}" \
     --enable-execute-command \
     --launch-type FARGATE \
     --tags key=environment,value=production \
