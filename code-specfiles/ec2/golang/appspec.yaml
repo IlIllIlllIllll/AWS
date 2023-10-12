@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /
+    overwrite: yes
+file_exists_behavior: OVERWRITE
+hooks:
+  BeforeInstall:
+    - location: before.sh     #dockeer install
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: after.sh      # ecr login
+      timeout: 60
+      runas: root
+  ApplicationStart:
+    - location: start.sh      # ecr image run
+      timeout: 60
+      runas: root

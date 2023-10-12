@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /root
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      timeout: 300
+      runas: root
+  AfterInstall: 
+    - location: scripts/afterinstall.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/applicationstart.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/applicationstop.sh
+      timeout: 300

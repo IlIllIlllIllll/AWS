@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: $(aws sts get-caller-identity --query 'Account' --output text) #Account ID Variable
+
+phases:
+  build:
+    commands:
+      - echo Build Starting on `date`
+      - gradle wrapper #gradle internal organs task
+      - chmod +x ./gradlew #Granting Execution Permission
+      - ./gradlew test
+      - ./gradlew build #Wrapper Execute Commands
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - build/libs/*.jar
+  discard-paths: yes #Ditching the Path
+
+
+#reports:
+#  <<YourRepoterARN입력>>:
+#    files:
+#      - 'result.xml'
+
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*' #maven uses /root/m2/cache/**/*

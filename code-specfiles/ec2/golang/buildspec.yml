@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - export ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)   # account id
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com    # ecr login
+  build:
+    commands:
+      - | #create dockerfile
+          cat << EOF > Dockerfile
+          FROM golang:latest
+          COPY gateway.go /app
+          WORKDIR /app
+          COPY gateway.go .
+          RUN chmod +x gateway.go
+          CMD ["go", "run", "gateway.go"]
+          EOF
+      - docker build -t gateway .
+      - docker tag gateway:latest $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/gateway:latest
+  post_build:
+    commands:
+      - docker push $ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/gateway:latest   # image push
+      
+artifacts:
+  files:
+    - appspec.yaml
+    - start.sh
+    - before.sh
+    - after.sh
+  discard-paths: yes    #discard path setting

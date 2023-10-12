@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - dev-function:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "dev-function"
+        Alias: "development"
+        CurrentVersion: 1
+        TargetVersion: 2

@@ -1,0 +1,34 @@
+{
+    "executionRoleArn": "arn:aws:iam::123456789101:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "sample-website",
+            "image": "<IMAGE_URI>",
+            "essential": true,
+            "healthCheck": {
+                "retries": 3,
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:80/ || exit 1"
+                ],
+                "timeout": 5,
+                "interval": 30,
+                "startPeriod": null
+            },
+            "portMappings": [
+                {
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "networkMode": "bridge",
+    "cpu": "512",
+    "memory": "1024",
+    "family": "skills-td"
+}

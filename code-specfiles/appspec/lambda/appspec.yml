@@ -1,0 +1,14 @@
+version: 0.0
+Resources:
+  - myLambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "myLambdaFunction"
+        Alias: "myLambdaFunctionAlias"
+        # CurrentVersion: "1"
+        CurrentVersion: "CHANGE_CURRENT_VERSION"
+        # TargetVersion: "2"
+        TargetVersion: "CHANGE_TARGET_VERSION"
+Hooks:
+  - BeforeAllowTraffic: "LambdaFunctionToValidateBeforeTrafficShift"
+  - AfterAllowTraffic: "LambdaFunctionToValidateAfterTrafficShift"

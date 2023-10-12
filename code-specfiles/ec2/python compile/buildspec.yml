@@ -1,0 +1,27 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - export ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)   # account id
+      - pip3 install pytest Flask pytest-flask       # test download
+  build:
+    commands:
+      - python3 -m compileall src/app.py                # app.py compileall
+      - mv src/__pycache__/app.cpython-311.pyc app.pyc   # Rename app.pyc
+      - pytest src/app.py -v --junitxml="result.xml"    # create report
+
+reports:
+  arn:aws:codebuild:ap-northeast-2:your-account-id:report-group/report:
+    files:
+      - 'result.xml'    # report file
+artifacts:
+  files:
+    - appspec.yaml
+    - scripts/beforeinstall.sh
+    - scripts/afterinstall.sh
+    - scripts/applicationstart.sh
+    - scripts/applicationstop.sh
+    - app.pyc

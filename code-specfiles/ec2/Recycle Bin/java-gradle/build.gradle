@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.example.HelloWorld'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+test {
+    useJUnitPlatform() // JUnit 5를 사용하는 경우 필요한 설정
+    reports {
+        junitXml.enabled = true // JUnit XML 형식의 리포트 활성화
+        html.enabled = false // HTML 형식의 리포트 활성화
+        // 다른 리포트 형식을 추가로 지정할 수도 있습니다.
+    }
+}
+
+```bac
+test {
+    reports {
+        junitXml {
+            setEnabled(true) // 수정된 부분
+            destination = file("$buildDir/test-results/xml")
+        }
+    }
+}
+
+jacocoTestReport {
+    dependsOn test
+}

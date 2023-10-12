@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: $(aws sts get-caller-identity --query 'Account' --output text) #Account ID Variable
+
+phases:
+  install:
+    commands:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com
+      - DATA=$(date +"%Y-%m-%d.%H.%M.%S" -d "9 hours")
+  build:
+    commands:
+      - docker build -t skills-ecr .
+      - docker tag skills-ecr:latest $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/skills-ecr:$DATA
+  post_build:
+    commands:
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/skills-ecr:$DATA
+      - printf '{"ImageURI":"%s"}' $AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/skills-ecr:$DATA > imageDetail.json
+artifacts:
+  files:
+    - taskdef.json
+    - appspec.yaml
+    - imageDetail.json
