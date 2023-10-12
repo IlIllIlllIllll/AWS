@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpc",
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/user": "admin"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpc",
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/user": "${aws:username}"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeTags",
+                "sts:DecodeAuthorizationMessage"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc"
+        }
+    ]
+}
