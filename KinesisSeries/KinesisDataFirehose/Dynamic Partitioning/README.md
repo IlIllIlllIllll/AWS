@@ -43,7 +43,7 @@ S3 Bucket Prefix
 <S3 Bucket>/path/method에 대해서 Partitioning은 다음과 같습니다.
 ```
 Key     JQ experession
-path   .path
+path    .path
 method  .method
 ```
 S3 Bucket Prefix
@@ -68,7 +68,7 @@ S3 Bucket Prefix
 <S3 Bucket>/year/method에 대해서 Partitioning은 다음과 같습니다.
 ```
 Key     JQ experession
-year   .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%Y)
+year    .date| strptime("%Y-%m-%d %H:%M:%S")| strptime("%Y)
 method  .method
 ```
 S3 Bucket Prefix
