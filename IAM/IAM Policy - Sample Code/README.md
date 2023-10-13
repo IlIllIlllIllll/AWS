@@ -1,0 +1,49 @@
+### IAM Policy - Sample
+---
+**특정 Tag만 Resource 할당**
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpc",
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/user": "admin"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpc",
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/user": "${aws:username}"
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeTags",
+                "sts:DecodeAuthorizationMessage"
+            ],
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc"
+        }
+    ]
+}
+
+```

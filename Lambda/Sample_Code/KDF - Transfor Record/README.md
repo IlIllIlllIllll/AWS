@@ -1,5 +1,23 @@
 ## KDF - Transfor Record
+**event**
+```json
+{
+  "invocationId": "invocationIdExample",
+  "deliveryStreamArn": "arn:aws:kinesis:EXAMPLE",
+  "region": "ap-northeast-2",
+  "records": [
+    {
+      "recordId": "49546986683135544286507457936321625675700192471156785154",
+      "approximateArrivalTimestamp": 1495072949453,
+      "data": "eyJ0aW1lIjoiMjAyMy0xMC0wNSAwNzoyODo0MyIsImhvc3QiOiIxMjcuMC4wLjEiLCJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL3YxL2NvbG9yL21lbG9uIiwicHJvdG9jb2wiOiJIVFRQLzEuMSIsInN0YXR1c19jb2RlIjoiMjAwIn0=="
+    }
+  ]
+}
+```
 
+<br>
+
+**Code**
 ```python
 import json
 import base64

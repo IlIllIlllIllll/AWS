@@ -1,4 +1,29 @@
 ## KDS - Transfor Record
+**event**
+```json
+{
+  "Records": [
+    {
+      "kinesis": {
+        "partitionKey": "partitionKey-03",
+        "kinesisSchemaVersion": "1.0",
+        "data": "eyJ0aW1lIjoiMjAyMy0xMC0wNSAwNzoyODo0MyIsImhvc3QiOiIxMjcuMC4wLjEiLCJtZXRob2QiOiJHRVQiLCJwYXRoIjoiL3YxL2NvbG9yL21lbG9uIiwicHJvdG9jb2wiOiJIVFRQLzEuMSIsInN0YXR1c19jb2RlIjoiMjAwIn0=",
+        "sequenceNumber": "49545115243490985018280067714973144582180062593244200961",
+        "approximateArrivalTimestamp": 1428537600
+      },
+      "eventSource": "aws:kinesis",
+      "eventID": "shardId-000000000000:49545115243490985018280067714973144582180062593244200961",
+      "invokeIdentityArn": "arn:aws:iam::EXAMPLE",
+      "eventVersion": "1.0",
+      "eventName": "aws:kinesis:record",
+      "eventSourceARN": "arn:aws:kinesis:EXAMPLE",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}
+```
+
+<br>
 
 ```python
 import base64

@@ -8,7 +8,7 @@
                 "ec2:CreateVpc",
                 "ec2:CreateTags"
             ],
-            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc",
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc",
             "Condition": {
                 "StringEquals": {
                     "aws:RequestTag/user": "admin"
@@ -22,7 +22,7 @@
                 "ec2:CreateVpc",
                 "ec2:CreateTags"
             ],
-            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc",
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc",
             "Condition": {
                 "StringEquals": {
                     "aws:RequestTag/user": "${aws:username}"
@@ -36,7 +36,7 @@
                 "ec2:DescribeTags",
                 "sts:DecodeAuthorizationMessage"
             ],
-            "Resource": "arn:aws:ec2:ap-northeast-2:948216186415:vpc"
+            "Resource": "arn:aws:ec2:ap-northeast-2:<Account ID>:vpc"
         }
     ]
 }
