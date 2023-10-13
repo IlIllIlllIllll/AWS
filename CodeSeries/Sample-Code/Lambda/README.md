@@ -42,7 +42,7 @@
     ```
 
 
-- buildspec.yml
+- buildspec.yaml
 
     ```bash
     version: 0.2

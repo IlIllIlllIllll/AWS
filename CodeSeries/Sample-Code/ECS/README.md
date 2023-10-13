@@ -85,8 +85,8 @@
     aws ecr create-repository --repository-name skills-ecr
     ```
 
-6. create buildspec.yml
-    ```yml
+6. create buildspec.yaml
+    ```yaml
     version: 0.2
 
     env:
@@ -115,8 +115,8 @@
         - imageDetail.json
     ```
 
-7. create appspec.yml
-    ```yml
+7. create appspec.yaml
+    ```yaml
     version: 0.0
     Resources:
       - TargetService:
