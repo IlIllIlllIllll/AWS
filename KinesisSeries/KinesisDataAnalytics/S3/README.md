@@ -1,6 +1,6 @@
 ## Kiensis Data Analytics - NoteBook
 ---
-### KDS NoteBook - S3
+### KDA NoteBook - S3
 **Create Table**
 ```sql
 %flink.ssql(type=update)

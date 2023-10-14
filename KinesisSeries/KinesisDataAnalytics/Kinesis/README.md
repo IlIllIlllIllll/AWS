@@ -1,6 +1,6 @@
 ## Kiensis Data Analytics - NoteBook
 ---
-### KDS NoteBook - Kinesis
+### KDA NoteBook - Kinesis
 **Create Table**
 ```sql
 %flink.ssql(type=update)
