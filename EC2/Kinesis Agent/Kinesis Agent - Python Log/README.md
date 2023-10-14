@@ -27,7 +27,7 @@ aws kinesis create-stream --stream-name <KDS Name>
 <br>
 
 ```shell
-sudo yum instlal -y aws-kinesis-agent
+sudo yum install -y aws-kinesis-agent
 ```
 
 <br>
