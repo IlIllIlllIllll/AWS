@@ -1,0 +1,2 @@
+## ECS TaskDefinition Secrets Manager
+> ECS TaskDefinition Secrets Manager - https://rnd04.tistory.com/entry/AWS-ECS-Task%EA%B0%80-Secrets-Manager%EC%97%90-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8F%84%EB%A1%9D-%EC%84%A4%EC%A0%95
