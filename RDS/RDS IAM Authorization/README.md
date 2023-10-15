@@ -30,6 +30,9 @@ sudo dnf install -y mariadb105
 sudo yum install -y wget
 ```
 
+<br>
+
+### Create SSL Certification
 ```
 mkdir -p /var/mysql-certs
 ```
@@ -108,7 +111,7 @@ aws iam create-role --role-name <Role Name> --assume-role-policy-document file:/
 aws iam attach-role-policy --role-name <Role> --policy-arn <Role arn>
 ```
 
-```
+```	
 TOKEN="$(aws rds generate-db-auth-token --hostname <RDS MySQL Writer Endpoint> --port 3306 --region <Region> --username <User Name>)"
 ```
 
