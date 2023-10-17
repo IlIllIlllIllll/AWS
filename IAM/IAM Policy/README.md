@@ -1,6 +1,7 @@
 > ABAC - https://whchoi98.gitbook.io/aws-iam/iam-tag <br>
 IAM Action - https://docs.aws.amazon.com/ko_kr/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html <br>
-IAM Policy - https://inpa.tistory.com/entry/AWS-%F0%9F%93%9A-IAM-Policy-JSON-%EA%B5%AC%EC%A1%B0-Arn-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC?category=947441
+IAM Policy - https://inpa.tistory.com/entry/AWS-%F0%9F%93%9A-IAM-Policy-JSON-%EA%B5%AC%EC%A1%B0-Arn-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC?category=947441 <br>
+IAM Roles - https://choiblog.tistory.com/198#2.2.%20Resource%20Policies%20&%20aws:PrincipalOrgID
 
 ---
 ## Json Format
